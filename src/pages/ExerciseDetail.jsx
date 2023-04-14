@@ -18,19 +18,24 @@ const ExerciseDetail = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     const fetchExercisesData = async () => {
-      const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com';
+      // const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com';
+      // const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
+      const exerciseDbUrl = 'http://localhost:3004';
       const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
 
-      const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises/exercise/${id}`, exerciseOptions);
+      // const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises?id=${id}`, exerciseOptions);
+      const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises/${id}`, exerciseOptions);
       setExerciseDetail(exerciseDetailData);
 
       const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions);
       setExerciseVideos(exerciseVideosData.contents);
 
-      const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
+      // const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
+      const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises?q=${exerciseDetailData.target}`, exerciseOptions);
       setTargetMuscleExercises(targetMuscleExercisesData);
 
-      const equimentExercisesData = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
+      // const equimentExercisesData = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`, exerciseOptions);
+      const equimentExercisesData = await fetchData(`${exerciseDbUrl}/exercises?q=${exerciseDetailData.equipment}`, exerciseOptions);
       setEquipmentExercises(equimentExercisesData);
     };
 

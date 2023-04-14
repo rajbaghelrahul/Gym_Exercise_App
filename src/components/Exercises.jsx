@@ -16,12 +16,14 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
 
       if (bodyPart === "all") {
         exercisesData = await fetchData(
-          "https://exercisedb.p.rapidapi.com/exercises",
+          // "https://exercisedb.p.rapidapi.com/exercises",
+          "http://localhost:3004/exercises",
           exerciseOptions
         );
       } else {
         exercisesData = await fetchData(
-          `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+          // `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
+          `http://localhost:3004/exercises?q=${bodyPart}`,
           exerciseOptions
         );
       }
@@ -56,7 +58,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
         sx={{ fontSize: { lg: "44px", xs: "30px" } }}
         mb="46px"
       >
-        Showing Results
+        <span style={{ color: '#FF2625' }}>{exercises.length}</span>  Showing Results 
       </Typography>
       <Stack
         direction="row"
