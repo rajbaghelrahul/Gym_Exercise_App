@@ -21,14 +21,17 @@ const ExerciseDetail = () => {
       // const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com';
       // const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
       const exerciseDbUrl = 'http://localhost:3004';
-      const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
+      // const youtubeSearchUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=despacito&key=AIzaSyCKvYHXH8AoX75aGdlfFe9qmreKOl_xFm0';
+      const youtubeSearchUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&key=AIzaSyCKvYHXH8AoX75aGdlfFe9qmreKOl_xFm0&';
 
       // const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises?id=${id}`, exerciseOptions);
       const exerciseDetailData = await fetchData(`${exerciseDbUrl}/exercises/${id}`, exerciseOptions);
       setExerciseDetail(exerciseDetailData);
 
-      const exerciseVideosData = await fetchData(`${youtubeSearchUrl}/search?query=${exerciseDetailData.name} exercise`, youtubeOptions);
-      setExerciseVideos(exerciseVideosData.contents);
+      const exerciseVideosData = await fetchData(`${youtubeSearchUrl}q=${exerciseDetailData.name} exercise`);
+      // setExerciseVideos(exerciseVideosData.contents);
+      // console.log(exerciseVideosData);
+      setExerciseVideos(exerciseVideosData.items);
 
       // const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`, exerciseOptions);
       const targetMuscleExercisesData = await fetchData(`${exerciseDbUrl}/exercises?q=${exerciseDetailData.target}`, exerciseOptions);
