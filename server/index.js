@@ -1,25 +1,9 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
+app.use(express.json());
+const Exercises = require('./exercises');
 
-const DB = 'mongodb+srv://rajbaghelrahul:cSrH26tg8xeL6nNx@cluster0.j825xg6.mongodb.net/gymAppNew?retryWrites=true&w=majority'
 
-// const connectDB = () => {
-//     console.log("connect db.")
-//     return mongoose.connect(DB, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true,
-//     });
-// };
-
-mongoose.connect(DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then((res) => {
-    console.log("Database is connected.");
-}).catch((err) => {
-    console.log("Database is not connected");
-});
 
 // Middleware
 
@@ -28,10 +12,35 @@ const middleware = (req, res, next) => {
     next();
 }
 
-app.get('/', (req, res) => {
-    console.log("Hello my Home");
-    res.send("Hello Home World! from server.");
+app.get('/exercises', async (req, res) => {
+    let result = await Exercises.find();
+    // let result = await Exercises.find({bodyPart: "waist"});
+    console.log(result);
+    res.send(result);
+    // console.log("Hello my Home");
+    // res.send("Hello Home World! from server.");
 });
+app.get('/exercises/:id', async (req, res) => {
+    let result = await Exercises.findOne({_id: req.params.id});
+    // let result = await Exercises.find({bodyPart: "waist"});
+    console.log(result);
+    res.send(result);
+    console.log("Hello my Exercise Details page.");
+    // res.send("Hello Exercises Details page World! from server.");
+});
+app.get('/search/:exerciseName', async (req, res) => {
+    let data = await Exercises.find({
+        '$or': [
+            {"bodyPart": {$regex: req.params.exerciseName}},
+            // {"age":{$regex:req.params.key}},
+            {"target": {$regex: req.params.exerciseName}},
+            {"equipment": {$regex: req.params.exerciseName}}
+        ]
+    })
+    console.log(data);
+    res.send(data);
+});
+
 
 app.get('/about', middleware, (req, res) => {
 
