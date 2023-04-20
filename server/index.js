@@ -14,6 +14,8 @@ const middleware = (req, res, next) => {
     next();
 }
 
+
+
 app.get('/exercises', async (req, res) => {
     try {
         let result = await Exercises.find();
