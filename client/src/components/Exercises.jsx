@@ -10,24 +10,32 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [exercisesPerPage] = useState(6);
 
-  useEffect(() => {
+  useEffect(() => {  
     const fetchExercisesData = async () => {
       let exercisesData = [];
 
       if (bodyPart === "all") {
-        exercisesData = await fetchData(
+        const resp = await fetchData(
           // "https://exercisedb.p.rapidapi.com/exercises",
-          "http://localhost:3004/exercises",
+          "/exercises",
           exerciseOptions
         );
+        // const resp = await data.json();
+        // console.log(resp);
+        exercisesData = resp;
+        // exercisesData = exercisesData.json();
       } else {
-        exercisesData = await fetchData(
+        const resp = await fetchData(
           // `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
-          `http://localhost:3004/exercises?q=${bodyPart}`,
+          // `http://localhost:3004/exercises?q=${bodyPart}`,
+          `/search/${bodyPart}`,
           exerciseOptions
         );
+        // const resp = await data.json();
+        exercisesData = resp;
+        // exercisesData = exercisesData.json();
       }
-
+      console.log(exercisesData);
       setExercises(exercisesData);
     };
 

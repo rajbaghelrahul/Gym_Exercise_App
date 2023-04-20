@@ -1,5 +1,7 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
 app.use(express.json());
 const Exercises = require('./exercises');
 
@@ -13,32 +15,47 @@ const middleware = (req, res, next) => {
 }
 
 app.get('/exercises', async (req, res) => {
-    let result = await Exercises.find();
-    // let result = await Exercises.find({bodyPart: "waist"});
-    console.log(result);
-    res.send(result);
-    // console.log("Hello my Home");
-    // res.send("Hello Home World! from server.");
+    try {
+        let result = await Exercises.find();
+        // let result = await Exercises.find({bodyPart: "waist"});
+        // console.log(result);
+        res.send(result);
+        console.log("Hello my Home");
+        // res.send("Hello Home World! from server.");
+        
+    } catch (error) {
+        console.log(error);
+    }
 });
 app.get('/exercises/:id', async (req, res) => {
-    let result = await Exercises.findOne({_id: req.params.id});
-    // let result = await Exercises.find({bodyPart: "waist"});
-    console.log(result);
-    res.send(result);
-    console.log("Hello my Exercise Details page.");
-    // res.send("Hello Exercises Details page World! from server.");
+    try {
+        let result = await Exercises.findById(req.params.id);
+        // let result = await Exercises.find({bodyPart: "waist"});
+        console.log(result);
+        res.send(result);
+        // console.log("Hello my Exercise Details page.");
+        // res.send("Hello Exercises Details page World! from server.");
+        
+    } catch (error) {
+        console.log(error);
+    }
 });
 app.get('/search/:exerciseName', async (req, res) => {
-    let data = await Exercises.find({
-        '$or': [
-            {"bodyPart": {$regex: req.params.exerciseName}},
-            // {"age":{$regex:req.params.key}},
-            {"target": {$regex: req.params.exerciseName}},
-            {"equipment": {$regex: req.params.exerciseName}}
-        ]
-    })
-    console.log(data);
-    res.send(data);
+    try {
+        let data = await Exercises.find({
+            '$or': [
+                {"bodyPart": {$regex: req.params.exerciseName}},
+                // {"age":{$regex:req.params.key}},
+                {"target": {$regex: req.params.exerciseName}},
+                {"equipment": {$regex: req.params.exerciseName}}
+            ]
+        })
+        console.log(data);
+        res.send(data);
+        
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 
@@ -48,5 +65,5 @@ app.get('/about', middleware, (req, res) => {
     res.send("Hello About world from the server"); // its shows on web page.
 });
 
-app.listen(3001);
+app.listen(3004);
 console.log("Hello World!");

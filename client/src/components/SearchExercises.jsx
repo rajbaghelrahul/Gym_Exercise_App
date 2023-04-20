@@ -10,14 +10,17 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
   useEffect(() => {
     const fetchExercisesData = async () => {
-      const bodyPartsData = await fetchData(
+      const response = await fetchData(
         // `https://exercisedb.p.rapidapi.com/exercises/bodyPartList`,
-        `http://localhost:3004/exercises`
+        `/exercises`
         // exerciseOptions
       );
+      // const response = await bodyPartsData.json();
+      
       // const res = await bodyPartsData.json();
-      // console.log(bodyPartsData[0].bodyPart);
-      const res = bodyPartsData.map((e) => e.bodyPart);
+      console.log(response[0].bodyPart);
+      // const res = bodyPartsData.map((e) => e.bodyPart);
+      const res = response.map((e) => e.bodyPart);
       // console.log(res);
       const unique = res.filter((item, i, ar) => ar.indexOf(item) === i);
       console.log(unique);
@@ -30,15 +33,16 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
   const handleSearch = async () => {
     if (search) {
-      const exercisesData = await fetchData(
+      const response = await fetchData(
         // `https://exercisedb.p.rapidapi.com/exercises`,
-        `http://localhost:3004/exercises`,
+        `/exercises`,
         exerciseOptions
       );
-      console.log(exercisesData);
+      // const response = await exercisesData.json();
+      // console.log(response);
       window.scrollTo({ top: 1800, left: 100, behavior: "smooth" });
 
-      const searchedExercises = exercisesData.filter(
+      const searchedExercises = response.filter(
         (exercise) =>
           exercise.name.toLowerCase().includes(search) ||
           exercise.target.toLowerCase().includes(search) ||

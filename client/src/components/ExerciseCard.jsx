@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Stack, Typography } from '@mui/material';
 
-const ExerciseCard = ({ exercise }) => (
-  <Link className="exercise-card" to={`/exercises/${exercise.id}`}>
+const ExerciseCard = ({ exercise }) => {
+  // console.log(exercise);
+  return (
+  <Link className="exercise-card" to={`/exercises/${exercise._id}`}>
     <img src={exercise.gifUrl} alt={exercise.name} loading="lazy" />
     <Stack direction="row">
       <Button sx={{ ml: '21px', color: '#fff', background: '#FFA9A9', fontSize: '14px', borderRadius: '20px', textTransform: 'capitalize' }}>
@@ -18,5 +20,6 @@ const ExerciseCard = ({ exercise }) => (
     </Typography>
   </Link>
 );
+}
 
 export default ExerciseCard;
