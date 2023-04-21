@@ -12,7 +12,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     const fetchExercisesData = async () => {
       const response = await fetchData(
         // `https://exercisedb.p.rapidapi.com/exercises/bodyPartList`,
-        `/exercises`
+        `https://gymexercisesservices.onrender.com/exercises`
         // exerciseOptions
       );
       // const response = await bodyPartsData.json();
@@ -35,7 +35,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     if (search) {
       const response = await fetchData(
         // `https://exercisedb.p.rapidapi.com/exercises`,
-        `/exercises`,
+        `https://gymexercisesservices.onrender.com/exercises`,
         exerciseOptions
       );
       // const response = await exercisesData.json();

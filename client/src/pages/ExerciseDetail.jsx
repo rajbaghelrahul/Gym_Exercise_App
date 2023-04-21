@@ -23,7 +23,7 @@ const ExerciseDetail = () => {
       
       // const exerciseDbUrl = 'https://exercisedb.p.rapidapi.com';
       // const youtubeSearchUrl = 'https://youtube-search-and-download.p.rapidapi.com';
-      const exerciseDbUrl = '';
+      const exerciseDbUrl = 'https://gymexercisesservices.onrender.com';
       
       // const youtubeSearchUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=despacito&key=AIzaSyCKvYHXH8AoX75aGdlfFe9qmreKOl_xFm0';
       const youtubeSearchUrl = 'https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&key=AIzaSyCKvYHXH8AoX75aGdlfFe9qmreKOl_xFm0&';

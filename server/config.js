@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const DB = 'mongodb+srv://rajbaghelrahul:cSrH26tg8xeL6nNx@cluster0.j825xg6.mongodb.net/gymApp?retryWrites=true&w=majority'
+require('dotenv').config();
+const DB = process.env.DB_link;
 
 // const connectDB = () => {
 //     console.log("connect db.")

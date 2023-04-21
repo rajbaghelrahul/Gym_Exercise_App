@@ -17,7 +17,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
       if (bodyPart === "all") {
         const resp = await fetchData(
           // "https://exercisedb.p.rapidapi.com/exercises",
-          "/exercises",
+          "https://gymexercisesservices.onrender.com/exercises",
           exerciseOptions
         );
         // const resp = await data.json();
@@ -28,7 +28,7 @@ const Exercises = ({ exercises, setExercises, bodyPart }) => {
         const resp = await fetchData(
           // `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`,
           // `http://localhost:3004/exercises?q=${bodyPart}`,
-          `/search/${bodyPart}`,
+          `https://gymexercisesservices.onrender.com/search/${bodyPart}`,
           exerciseOptions
         );
         // const resp = await data.json();
