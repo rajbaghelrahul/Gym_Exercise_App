@@ -6,6 +6,9 @@ import Home from "../pages/Home";
 import ExerciseDetail from "../pages/ExerciseDetail";
 import NotFound from "../pages/NotFound";
 import { Box } from "@mui/material";
+import Login from "./Login/Login";
+import Register from "./Register/Register";
+
 
 const AllRoutes = () => {
   return (
@@ -13,6 +16,8 @@ const AllRoutes = () => {
       <Navbar />
       {/* <h1>Hello World!</h1> */}
       <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} />
         <Route path="/exercises/:_id" element={<ExerciseDetail />} />
         <Route path="*" element={<NotFound />} />

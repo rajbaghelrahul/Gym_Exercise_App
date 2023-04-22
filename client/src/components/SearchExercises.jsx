@@ -21,7 +21,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
       console.log(response[0].bodyPart);
       // const res = bodyPartsData.map((e) => e.bodyPart);
       const res = response.map((e) => e.bodyPart);
-      // console.log(res);
+      console.log(res);
       const unique = res.filter((item, i, ar) => ar.indexOf(item) === i);
       console.log(unique);
       setBodyParts(["all", ...unique]);
