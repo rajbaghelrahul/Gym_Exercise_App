@@ -7,8 +7,11 @@ import HeroBanner from "../components/HeroBanner";
 const Home = () => {
   const [bodyPart, setBodyPart] = useState("all");
   const [exercises, setExercises] = useState([]);
+  
+  
   return (
     <Box>
+      {/* <div className="button" onClick={() => signOut()} >Logout</div> */}
       <HeroBanner />
       <SearchExercises
         setExercises={setExercises}

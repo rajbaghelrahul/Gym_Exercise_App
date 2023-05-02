@@ -3,6 +3,8 @@
     padding: 0;
 }
 .register {
+    margin: auto;
+    margin-top: 20px;
     width: 400px;
     background: #fff;
     border: 1px solid #dddfe2;
@@ -24,9 +26,28 @@
     font-size: 1rem;
 }
 
+.register > .regBtn {
+    text-decoration: none;
+}
+
 .register > .button {
-    background: #1877f2;
-    border: 1px solid #1877f2;
+    /* background: #1877f2; */
+    background: #FF2625;
+    border: 1px solid #FF2625;
+    /* border: 1px solid #1877f2; */
+    color: #fff;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+.register > .regBtn > .button {
+    /* background: #1877f2; */
+    background: #FF2625;
+    border: 1px solid #FF2625;
+    /* border: 1px solid #1877f2; */
     color: #fff;
     font-size: 1.25rem;
     padding: 0.5rem;

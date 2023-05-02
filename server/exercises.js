@@ -10,5 +10,7 @@ const ExerciseSchema = new mongoose.Schema({
     target: String,
 });
 
+
+
 const Exercises = mongoose.model("exercises", ExerciseSchema); // this is automaticaly add in "firsts" collection in Database because of "firsts" is create by mongoose.
 module.exports = Exercises;
