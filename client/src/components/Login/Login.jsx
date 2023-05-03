@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import './Login.css';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Login = ({setUserName}) => {
-  const [data, setData] = useState(false);
+  
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -17,39 +20,46 @@ const Login = ({setUserName}) => {
       [name]: value
     })
   }
-
-  // const { name, email, password, reEnterPassword } = user
-  //       if( name && email && password && (password === reEnterPassword)){
-  //           axios.post("http://localhost:3004/register", user)
-  //           .then( res => {
-  //               alert(res.data.message)
-  //               if(res.data.message === "Successfully Registered, Please login now.") {
-  //                   setData(true);
-  //               }
-  //               // console.log(res.data.message);
-  //               // history.push("/login") 
-  //           })
-  //       } else {
-  //           alert("invalid input")
-  //       }
  
+  const notify = () => {
+    toast("Login Successfully!")
+    console.log("Login Successfully!");
+  };
+  const notify1 = () => {
+    toast("Password is Incorrect!")
+    console.log("Password is Incorrect!");
+  };
+  const notify2 = () => {
+    toast("First Fill All Inputs!")
+    console.log("First Put Input!");
+  };
+  const notify3 = () => {
+    toast("Invalid User!")
+    console.log("Invalid User!");
+  };
+  
+
   const login = () => {
     try {
       const { email, password } = user;
       if (email && password ) {
+        // notify();
         axios.post('http://localhost:3004/login', user)
           .then(res => {
-            alert(res.data.message);
+            console.log(res.data.message);
             if(res.data.message === "User logged In") {
               setUserName(res.data.user);
-              setData(true);
+              // setData(true);
               window.localStorage.setItem("isLoggedIn", true);
-              // const userLocaly = localStorage.setItem("useName", JSON.stringify(res.data.user));
-              // setUserName(userLocaly);
+              notify();
+            } else if(res.data.message === "Password is Incorrect") {
+              notify1();
+            } else if(res.data.message === "Invalid User") {
+              notify3();
             }
           })
       } else {
-        alert("Invalid Input");
+        notify2();
       }
       
     } catch (error) {
@@ -57,16 +67,19 @@ const Login = ({setUserName}) => {
     }
   }
 
-  if(data) {
-    return <Navigate to={"/"} />
-  }
 
   return (
     <div className='login'>
         <h1>Login</h1>
         <input type="text" name="email" value={user.email} placeholder='Enter your Email' onChange={handleChange} />
-        <input type="password" name="password" value={user.password} placeholder='Enter your Password' onChange={handleChange} />
+        <input type="password" name="password" value={user.password} placeholder='Enter your Password' onChange={handleChange} onKeyPress={(e) => {
+          if(e.key === "Enter") {
+            login();
+          }
+        }} />
         <div className='button' onClick={login}>Login</div>
+        {/* <button onClick={notify}>Notify!</button> */}
+        <ToastContainer />
         <div>or</div>
         <Link to='/register' className='logBtn'><div className='button'>Register</div></Link>
     </div>

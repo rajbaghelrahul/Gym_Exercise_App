@@ -9,6 +9,11 @@ const Home = () => {
   const [exercises, setExercises] = useState([]);
   
   
+  
+  // notify();
+  
+  
+
   return (
     <Box>
       {/* <div className="button" onClick={() => signOut()} >Logout</div> */}
