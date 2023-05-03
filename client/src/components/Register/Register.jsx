@@ -42,7 +42,7 @@ const Register = () => {
     }
 
     if (data) {
-        return <Navigate to={"/login"} />;
+        return <Navigate to={"/"} />;
     }
     
     return (
