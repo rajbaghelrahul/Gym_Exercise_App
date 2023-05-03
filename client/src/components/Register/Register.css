@@ -56,3 +56,14 @@
     outline: none;
     cursor: pointer;
 }
+
+
+@media screen and (min-width: 0px) and (max-width: 426px) {
+    .register {
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 187px;
+        
+        width: 100%;
+    }
+}
