@@ -44,7 +44,7 @@ const Login = ({setUserName}) => {
       const { email, password } = user;
       if (email && password ) {
         // notify();
-        axios.post('http://localhost:3004/login', user)
+        axios.post('https://gymexercisesservices.onrender.com/login', user)
           .then(res => {
             console.log(res.data.message);
             if(res.data.message === "User logged In") {
