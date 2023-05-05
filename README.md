@@ -6,7 +6,7 @@ Our task is that we have to create a pixel perfect Gym Exercise Guidance App wit
 
 ## Making
 
-I am a student of a Full Stack Web Development course offered by Masai School. During our Placement Phase, I was assigned a task to create a pixel-perfect Gym Exercise guidance App. I was given a single team member. After some thinking and Planning, I started working on it and completed all the given tasks in 8 days.
+I am a student of a Full Stack Web Development course offered by Masai School. During my Placement Phase, I created a Gym Exercise guidance App. I was given a single team member. After some thinking and Planning, I started working on it and completed all the given tasks in 8 days.
 
 **Deploy Link :- https://gym-exercises-guide.netlify.app/**
 
