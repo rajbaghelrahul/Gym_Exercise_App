@@ -10,16 +10,6 @@ I am a student of a Full Stack Web Development course offered by Masai School. D
 
 **Deploy Link :- https://gym-exercises-guide.netlify.app/**
 
-## Landing Page
-
-<img src="https://i.postimg.cc/jd39KKJ8/main.png" />
-
-## Middle Section
-
-<img src="https://i.postimg.cc/NMtCbjW0/homepage.png"/>
-<br/>
-<img src="https://i.postimg.cc/MGVryQ34/homepage2.png"/>
-
 
 ## Login
 
