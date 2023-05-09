@@ -21,11 +21,11 @@ I am a student of a Full Stack Web Development course offered by Masai School. D
 
 ## Home Page
 
-<img src="https://i.postimg.cc/Pqf9wdw9/homePage.png"/>
+<img src="https://i.postimg.cc/zDShpTQ6/home-Page2.png" />
 
 ## Category Section
 
-<img src="https://i.postimg.cc/htYPCZ1C/home-Middle.png" />
+<img src="https://i.postimg.cc/vTMVbm40/home-Middle2.png" />
 
 ## Exercises on Home Page
 
